@@ -80,8 +80,8 @@ class VehicleConfig(object):
    WHEEL_MAXV = 0.0        # Maximum wheel speed (mm/s)
    V_Limit = 0             # Speed limit for vehicle (m/s)
    W_Limit = 0             # Rotational Speed limit for vehicle (rad/s)
-   V_Limit_JOY = 0         # Speed limit for Joy control (m/s)
-   W_Limit_JOY = 0         # Rotational Speed limit for Joy control (rad/s)
+   V_Limit_JOY = 0.0         # Speed limit for Joy control (m/s)
+   W_Limit_JOY = 0.0         # Rotational Speed limit for Joy control (rad/s)
    ArrowFwdStep = 100.0    # Forward motion step when arrow key pressed (mm)
    ArrowRotRate = 1/10.0   # Rotational rate per full turn
    encoder = Encoder()
@@ -101,8 +101,8 @@ class Robot:
    param_baud = rospy.get_param('~baud')
    param_modelName = rospy.get_param('~modelName')
    param_joy_en = rospy.get_param('~joy_enable')
-   param_V_Limit_JOY = rospy.get_param('~V_Limit_JOY')
-   param_W_Limit_JOY = rospy.get_param('~W_Limit_JOY')
+   param_V_Limit_JOY = float(rospy.get_param('~V_Limit_JOY'))
+   param_W_Limit_JOY = float(rospy.get_param('~W_Limit_JOY'))
 
    print('PARAM JOY_ENABLE:')
    print(param_joy_en)
