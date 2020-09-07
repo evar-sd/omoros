@@ -101,8 +101,12 @@ class Robot:
    param_baud = rospy.get_param('~baud')
    param_modelName = rospy.get_param('~modelName')
    param_joy_en = rospy.get_param('~joy_enable')
+   param_V_Limit_JOY = rospy.get_param('~V_Limit_JOY')
+   param_W_Limit_JOY = rospy.get_param('~W_Limit_JOY')
+
    print('PARAM JOY_ENABLE:')
    print(param_joy_en)
+
    # Open Serial port with parameter settings
    ser = serial.Serial(param_port, param_baud)
    #ser = serial.Serial('/dev/ttyS0', 115200) #For raspberryPi
@@ -143,6 +147,7 @@ class Robot:
    rot = 0.0            # Rotational speed returned from CVR command
    def __init__(self):
       ## Set vehicle specific configurations
+     
       if self.param_modelName == "r1":
          print "**********"
          print "Driving R1"
@@ -152,8 +157,8 @@ class Robot:
          self.config.WHEEL_MAXV = 1200.0  # Maximum speed can be applied to each wheel (mm/s)
          self.config.V_Limit = 0.6        # Limited speed (m/s)
          self.config.W_Limit = 0.1
-         self.config.V_Limit_JOY = 0.25   # Limited speed for joystick control
-         self.config.W_Limit_JOY = 0.05
+         self.config.V_Limit_JOY = self.param_V_Limit_JOY   # Limited speed for joystick control default : 0.25
+         self.config.W_Limit_JOY = self.param_W_Limit_JOY   # default : 0.05
          self.config.ArrowFwdStep = 250   # Steps move forward based on Odometry
          self.config.ArrowRotRate = 0.125
          self.config.encoder.Dir = 1.0
