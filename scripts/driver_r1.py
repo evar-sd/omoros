@@ -155,7 +155,7 @@ class Robot:
          self.config.WIDTH = 0.591        # Apply vehicle width for R1 version
          self.config.WHEEL_R = 0.11       # Apply wheel radius for R1 version
          self.config.WHEEL_MAXV = 1200.0  # Maximum speed can be applied to each wheel (mm/s)
-         self.config.V_Limit = 0.6        # Limited speed (m/s)
+         self.config.V_Limit = 1.2        # Limited speed (m/s)
          self.config.W_Limit = 0.1
          self.config.V_Limit_JOY = self.param_V_Limit_JOY   # Limited speed for joystick control default : 0.25
          self.config.W_Limit_JOY = self.param_W_Limit_JOY   # default : 0.05
